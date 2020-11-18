@@ -1,0 +1,18 @@
+<view class="wrap">
+    <input class="input" value="{{value}}"  placeholder-class="input-placeholder" placeholder='通过ID查询店铺' bindinput="input" bindfocus="" bindblur="" bindconfirm="confirm" confirm-type='search'></input>
+    <view >
+        <block wx:for="{{list}}">
+            <view class="item_wrap" bindtap = "navigate" data-url='/pages/shops/item/item?key={{item.key}}&title={{item.name}}'>
+                <image class="image" src="{{item.image}}" mode="aspectFill" lazy-load="true"/>
+                <view class="content_wrap">
+                    <view class="title">
+                        {{item.name}}
+                    </view>
+                    <view class="content">
+                        {{item.content}}
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

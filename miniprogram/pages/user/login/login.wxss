@@ -1,0 +1,54 @@
+.page-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 100rpx;
+  box-sizing: border-box;
+
+}
+.page-body-title {
+  line-height: 200rpx;
+}
+.page-body-text {
+  color: #bbb;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  margin: 0 0 100rpx 0;
+  text-align: center;
+}
+.page-body-button {
+  margin-top: 320rpx;
+  width: 100%;
+}
+
+.picker {
+  width: 300rpx;
+  border: 1rpx solid #f0f0f0;
+  padding: 20rpx 45rpx 20rpx 45rpx;
+  border-radius: 5rpx;
+  text-align: center;
+}
+
+.page-body-text2 {
+  color: #bbb;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin: 20rpx 40 100rpx 40;
+  text-align: center;
+}
+
+button {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.button-sp-area {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.mini-btn {
+  margin-right: 10rpx;
+}

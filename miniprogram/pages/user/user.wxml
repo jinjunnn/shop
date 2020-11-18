@@ -1,0 +1,444 @@
+<!--pages/subs/subs.wxml-->
+<!-- 这里是微信底部弹出框的代码 
+这部分代码一定要放在最上面
+
+-->
+
+
+
+<view class="{{backgroundColor}}" catchtouchmove="true">
+	<view class="commodity_screen" wx:if="{{showModalStatus==6}}" touchmove="bind_close">
+		<view class="modal_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="title" hover-class="none" hover-stop-propagation="false">
+				{{settings.customer_service_name}}
+			</view>
+			<view class="sub_title" hover-class="none" hover-stop-propagation="false">
+				<!-- {{result.title}} -->
+			</view>
+			<view class="" hover-class="none" hover-stop-propagation="false">
+				<image class="model_image" src="{{settings.customer_service_qrcode}}" mode="aspectFill" lazy-load="true" binderror=""
+					bindload="">
+
+				</image>
+				<view class="model_content" hover-class="none" hover-stop-propagation="false">
+					<!-- {{result.content}} -->
+				</view>
+
+			</view>
+		</view>
+		<view class="modal_btn_wrap">
+			<view class="button_wrap">
+				<button class="left_button" bindtap="bind_close" data-message="{{settings.customer_service_wechatid}}">
+					暂不需要
+				</button>
+				<button class="right_button" bindtap="bind_close">
+					关闭
+				</button>
+			</view>
+			<view class="heihei" hover-class="none" hover-stop-propagation="false">
+				{{settings.customer_service_content}}
+			</view>
+		</view>
+	</view>
+
+
+	<view class="commodity_screen" wx:if="{{showModalStatus==1}}" touchmove="bind_close">
+		<view class="modal_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="title" hover-class="none" hover-stop-propagation="false">
+				完善信息
+			</view>
+			<view class="sub_title2" hover-class="none" hover-stop-propagation="false">
+				订阅卡资讯需要获取您的手机号码和微信号码
+			</view>
+			<view class="" hover-class="none" hover-stop-propagation="false">
+
+				<input class="input" value="{{wechatid}}" type="text" placeholder="请输入微信号"
+					placeholder-style="color:white" placeholder-class="input-placeholder" maxlength="32" focus="false"
+					bindinput="bind_input_wechatid" bindfocus="" bindblur="" bindconfirm="">
+
+				</input>
+
+				<input class="input" value="{{phoneNumber}}" type="number" placeholder-style="color:white"
+					placeholder="请输入手机号码" placeholder-class="input-placeholder" maxlength="32" focus="false"
+					bindinput="bind_input_phoneNumber" bindfocus="" bindblur="" bindconfirm="">
+
+				</input>
+
+			</view>
+		</view>
+		<view class="modal_btn_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="button_wrap" hover-class="none" hover-stop-propagation="false">
+				<button class="left_button" bindtap="bind_close">
+					关闭
+				</button>
+				<button class="right_button" bindtap="bind_submit_userinfo">
+					确定
+				</button>
+			</view>
+			<view class="heihei" hover-class="none" hover-stop-propagation="false">
+				加入我们，快人一步！
+			</view>
+		</view>
+	</view>
+
+	<!-- 实名认证 -->
+	<view class="commodity_screen" wx:if="{{showModalStatus==2}}" touchmove="bind_close">
+		<view class="modal_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="title" hover-class="none" hover-stop-propagation="false">
+				完善信息
+			</view>
+			<view class="sub_title2" hover-class="none" hover-stop-propagation="false">
+				订阅卡资讯需要获取您的手机号码和微信号码
+			</view>
+			<view class="" hover-class="none" hover-stop-propagation="false">
+
+				<input class="input" value="{{wechatid}}" type="text" placeholder="请输入微信号" placeholder-style="color:white"
+					placeholder-class="input-placeholder" maxlength="32" focus="false" bindinput="bind_input_wechatid"
+					bindfocus="" bindblur="" bindconfirm="">
+
+				</input>
+
+				<input class="input" value="{{phoneNumber}}" type="number" placeholder-style="color:white"
+					placeholder="请输入手机号码" placeholder-class="input-placeholder" maxlength="32" focus="false"
+					bindinput="bind_input_phoneNumber" bindfocus="" bindblur="" bindconfirm="">
+
+				</input>
+
+			</view>
+		</view>
+		<view class="modal_btn_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="button_wrap" hover-class="none" hover-stop-propagation="false">
+				<button class="left_button" bindtap="bind_close">
+					关闭
+				</button>
+				<button class="right_button" bindtap="bind_submit_userinfo">
+					确定
+				</button>
+			</view>
+			<view class="heihei" hover-class="none" hover-stop-propagation="false">
+				加入我们，快人一步！
+			</view>
+		</view>
+	</view>
+	<!-- 邀请码 -->
+	<view class="commodity_screen" wx:if="{{showModalStatus==3}}" touchmove="bind_close">
+		<view class="modal_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="title" hover-class="none" hover-stop-propagation="false">
+				设置我的邀请码
+			</view>
+			<view class="sub_title2" hover-class="none" hover-stop-propagation="false">
+				一旦设置完邀请码不可以再更改
+			</view>
+			<view class="" hover-class="none" hover-stop-propagation="false">
+				<view class="input" hover-class="none" hover-stop-propagation="false" wx:if="{{user.inviter_code}}">
+					{{inviter_code}}
+				</view>
+				<input class="input" value="{{inviter_code}}" type="text" placeholder="请输入不超过六位的字母和数字组合"
+					placeholder-style="color:white;font-size:18rpx" placeholder-class="input-placeholder" maxlength="6" focus="false"
+					bindinput="bind_input_inviter_code" bindfocus="" bindblur="" bindconfirm="" wx:else>
+				</input>
+			</view>
+		</view>
+		<view class="modal_btn_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="button_wrap" hover-class="none" hover-stop-propagation="false">
+				<button class="left_button" bindtap="bind_close">
+					关闭
+				</button>
+				<button class="right_button" bindtap="bind_submit_inviter_code">
+					确定
+				</button>
+			</view>
+			<view class="heihei" hover-class="none" hover-stop-propagation="false">
+				加入我们，快人一步！
+			</view>
+		</view>
+	</view>
+
+	<!-- 注册 -->
+	<view class="commodity_screen" wx:if="{{showModalStatus==4}}" touchmove="bind_close">
+		<view class="modal_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="title" hover-class="none" hover-stop-propagation="false">
+				授权登录
+			</view>
+			<view class="sub_title2" hover-class="none" hover-stop-propagation="false">
+				本小程序仅对代购和海淘用户开放，禁止终端用户登录。
+			</view>
+			<view class="" hover-class="none" hover-stop-propagation="false">
+				<view class="input2" hover-class="none" hover-stop-propagation="false" wx:if="{{invitation_code}}">
+					邀请码：{{invitation_code}}
+				</view>
+				<input class="input" value="{{invitation_code}}" type="text" placeholder="请输入邀请码" placeholder-style="color:white"
+					placeholder-class="input-placeholder" maxlength="6" focus="false" bindinput="bind_input_invitation_code"
+					bindfocus="" bindblur="" bindconfirm="" wx:else>
+				</input>
+	
+			</view>
+		</view>
+		<view class="modal_btn_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="button_wrap" hover-class="none" hover-stop-propagation="false">
+				<button class="left_button" bindtap="bind_not_login">
+					暂不登录
+				</button>
+				<button class="right_button" bindgetuserinfo="bind_submit_invitation_code" open-type="getUserInfo">
+					授权登录
+				</button>
+			</view>
+			<view class="heihei" hover-class="none" hover-stop-propagation="false">
+				出卡、收卡、代刷、仓转等资讯快人一步！
+			</view>
+		</view>
+	</view>
+
+	<!-- 保证金 -->
+	<view class="commodity_screen" wx:if="{{showModalStatus==5}}" touchmove="bind_close">
+		<view class="modal_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="title" hover-class="none" hover-stop-propagation="false">
+				完善信息
+			</view>
+			<view class="sub_title2" hover-class="none" hover-stop-propagation="false">
+				订阅卡资讯需要获取您的手机号码和微信号码
+			</view>
+			<view class="" hover-class="none" hover-stop-propagation="false">
+
+				<input class="input" value="{{wechatid}}" type="text" placeholder="请输入微信号" placeholder-style="color:white"
+					placeholder-class="input-placeholder" maxlength="32" focus="false" bindinput="bind_input_wechatid"
+					bindfocus="" bindblur="" bindconfirm="">
+
+				</input>
+
+				<input class="input" value="{{phoneNumber}}" type="number" placeholder-style="color:white"
+					placeholder="请输入手机号码" placeholder-class="input-placeholder" maxlength="32" focus="false"
+					bindinput="bind_input_phoneNumber" bindfocus="" bindblur="" bindconfirm="">
+
+				</input>
+
+			</view>
+		</view>
+		<view class="modal_btn_wrap" hover-class="none" hover-stop-propagation="false">
+			<view class="button_wrap" hover-class="none" hover-stop-propagation="false">
+				<button class="left_button" bindtap="bind_close">
+					关闭
+				</button>
+				<button class="right_button" bindtap="bind_submit_userinfo">
+					确定
+				</button>
+			</view>
+			<view class="heihei" hover-class="none" hover-stop-propagation="false">
+				加入我们，快人一步！
+			</view>
+		</view>
+	</view>
+</view>
+
+
+
+<!-- 未获取到数据显示空白 -->
+
+
+
+
+<view wx:if="{{display==false}}">
+
+</view>
+
+<!-- 加载到数据后显示加载数据的内容 -->
+<view wx:elif="{{display==true}}">
+	<view style="background-color:#ffffff; border-radius: 10rpx;margin:20rpx">
+		<view style="margin: 0rpx 50rpx 100rpx 50rpx;padding-top: 30rpx;">
+			<navigator url="./setting/setting">
+				<view style="display: -webkit-flex;justify-content: space-between;">
+					<view style="margin-top: 5rpx;flex: 5;">
+						<view style="font-size:20pt;" class="title_item" wx:if="{{user.nickName}}">{{user.nickName}}</view>
+						<view style="font-size:13pt; margin-top:5rpx;margin-bottom: 20rpx;">
+							<span id="changestyle">ID:{{user.uid}}</span>
+						</view>
+					</view>
+					<view class="item_author_icon">
+						<image wx:if="{{user.image}}" src="{{user.image}}" class="author_icon_item"
+							style=" width:120rpx; height:120rpx;border-radius: 50%" mode="scaleToFill"></image>
+						<image wx:else src="{{icon_user}}" class="author_icon_item"
+							style=" width:120rpx; height:120rpx;border-radius: 50%" mode="scaleToFill"></image>
+					</view>
+				</view>
+			</navigator>
+		</view>
+
+			<view class="author" wx:if="{{settings.landing_page_display==0}}">
+				<view class="author_title" bindtap="bind_balance">
+						<view style="font-size:10pt;" 
+							class="title_item">{{user.balance}}</view>
+						<view style="font-size:10pt;" 
+							class="title_item">金币</view>
+				</view>
+				<view class="author_title" bindtap="bind_intergal">
+						<view style="font-size:10pt;" 
+							class="title_item">{{user.i_balance}}</view>
+						<view style="font-size:10pt;" 
+							class="title_item">银币</view>
+				</view>
+				<view class="author_title" bindtap="bind_deposit">
+						<view style="font-size:10pt;" 
+							class="title_item">{{user.deposit}}</view>
+						<view style="font-size:10pt;" 
+							class="title_item">积分</view>
+				</view>
+			</view>
+	</view>
+	<view wx:if="{{settings.landing_page_display==0}}">
+		<view style="background-color: #ffffff; border-radius: 10rpx; margin:20rpx;">
+			<!-- <view style="padding:20rpx" bindtap="bind_customer_service">
+				<view style="display: -webkit-flex;justify-content: space-between;">
+					<view style="display: -webkit-flex;">
+						<view>
+							<image style="height:90rpx; width:90rpx;padding-top:8rpx" src="{{settings.customer_service_image}}" mode="widthFix">
+
+							</image>
+						</view>
+						<view style="font-size:28rpx;padding-top:30rpx;">
+							{{settings.customer_service_name}}
+						</view>
+					</view>
+					<view style="width:180rpx">
+								<button class="button" size="mini" bindtap='' data-index="{{index}}">
+									联系我
+								</button>
+					</view>
+
+				</view>
+			</view> -->
+			<view class="form-wrap" style="font-size:28rpx;">
+				<button open-type="contact" bindcontact="handleContact" class="navigator">
+					<view class="userImage2">
+						<image src="{{icon_service}}" style="margin-top: 10rpx; width:50rpx; height:50rpx;" mode="scaleToFill">
+						</image>
+					</view>
+					<view class="userName">联系客服</view>
+					<view class="icon">
+						<image src="{{icon_arrow}}" style=" width:60rpx; height:60rpx" mode="scaleToFill"></image>
+					</view>
+				</button>
+			</view>
+		</view>
+		<view style="background-color: #ffffff; border-radius: 10rpx; margin:20rpx;" wx:if="{{settings.landing_page_display==1}}">
+			<view style="height:1rpx"></view>
+			<view class="form-wrap" style="font-size:28rpx;">
+				<view class="navigator" bindtap="bind_quote">
+					<view class="userImage1">
+						<image src="{{icon_order}}" style="margin-top: 10rpx; width:50rpx; height:50rpx;" mode="scaleToFill">
+						</image>
+					</view>
+					<view class="userName">我的报价</view>
+					<view class="icon">
+						<image src="{{icon_arrow}}" style=" width:60rpx; height:60rpx" mode="scaleToFill"></image>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="first">
+			<view style="margin:20rpx 0 0 40rpx;font-size: 24rpx;padding:20rpx 0 20rpx 0">
+				我发布的订单
+			</view>
+			
+			<view class="second_b">
+				<view bindtap="bind_nav" data-url='/pages/list/list?key=mlist_{{user.uid}}&title=我的发布&post=0' class='item_wrap'>
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/b163e372dbe939fd7122/%E4%B9%B0%E5%8D%95.png"></image>
+					<view class="first_text">
+						我的发布
+					</view>
+				</view>
+				<!-- <view bindtap="bind_sell_goods">
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/ed23ac58a5286c9a9cfe/%E5%8D%96%E5%8D%95.png" lazy-load="false"
+						binderror="" bindload=""></image>
+					<view class="first_text" hover-class="none" hover-stop-propagation="false">
+						我的出货
+					</view>
+				</view>
+				<view bindtap="bind_need_pay">
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/f6fce37f2348c6f7b6dd/%E4%B9%B0%E6%96%B9%20copy.png"
+						lazy-load="false" binderror="" bindload=""></image>
+					<view class="first_text" hover-class="none" hover-stop-propagation="false">
+						我的求刷
+					</view>
+				</view>
+				<view bindtap="bind_need_card">
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/e89ce264e90092851c39/%E7%A4%BC%E5%93%81%E5%8D%A1%E8%B5%84%E9%87%91%20%281%29.png"
+						lazy-load="false" binderror="" bindload=""></image>
+					<view class="first_text" hover-class="none" hover-stop-propagation="false">
+						我的求卡
+					</view>
+				</view> -->
+			</view>
+		</view>
+
+		<view class="first">
+			<view style="margin:20rpx 0 0 40rpx;font-size: 24rpx;padding:20rpx 0 20rpx 0">
+				个人资料
+			</view>
+
+			<view class="second_b">
+				<view bindtap="bind_tap" data-information='实名认证暂未开放使用'>
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/7937195b345d1e33a220/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81.png"></image>
+					<view class="first_text">
+						实名认证
+					</view>
+				</view>
+				<view bindtap="bind_set_userinfo">
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/927e7265909c0fe5ca2b/%E5%AE%8C%E5%96%84%E8%B5%84%E6%96%99.png"></image>
+					<view class="first_text">
+						完善信息
+					</view>
+				</view>
+				<view bindtap="bind_invite">
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/ea0d9cf4e5abc0e7382d/%E9%82%80%E8%AF%B7%E7%A0%81%E5%A1%AB%E5%85%85.png"></image>
+					<view class="first_text">
+						个人邀请码
+					</view>
+				</view>
+				<view bindtap="bind_settings">
+					<image class="second_image"
+						src="http://lc-XBtceMXX.cn-n1.lcfile.com/bb594a5ddb26d1c483cf/%E8%AE%BE%E7%BD%AE%20%281%29.png"></image>
+					<view class="first_text">
+						权限设置
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="end">
+			<view >
+
+			</view>
+			<text>
+				-----END-----
+				小程序由海淘达人开发运营
+
+
+			</text>
+		</view>
+		<view style="height:30rpx"></view>
+	</view>
+</view>
+
+
+
+<view wx:if="{{settings.landing_page_display==1}}">
+	<view class="endd">
+		历史快递记录：
+	</view>
+	<view class="end">
+		<text selectable="false" space="false" decode="false">
+			-----END-----
+			目前仅支持快递功能
+			更多更能敬请期待
+					@海淘达人BB叔
+
+
+		</text>
+	</view>
+</view>

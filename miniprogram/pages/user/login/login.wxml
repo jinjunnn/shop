@@ -1,0 +1,39 @@
+
+
+<view class="container">
+  <view class="page-body" wx:if="{{user.status==0||user.status==1}}">
+    <view class="page-section">
+        <text class="page-body-text">本小程序海淘和代购提供服务，采取邀请注册制。
+          如您没有邀请码请联系客服审核您是代购后给您邀请码
+        </text>
+        <view class="sub_wrap">
+          <input placeholder="请填写邀请码" confirm-type="next" value="{{amount}}"
+            bindinput="input_amount"  class="picker"></input>
+        </view>
+    </view>
+    <view style="height:100rpx">
+      
+    </view>
+    <view class="button-sp-area">
+      <button type="primary" plain="true" open-type="getUserInfo" bindgetuserinfo = "login">微信登录</button>
+      <button type="default" plain="true" open-type='contact'>联系客服</button>
+    </view>
+  </view>
+  <view class="page-body" wx:if="{{user.status==2}}">
+    <view class="page-section">
+        <text class="page-body-text">发布资讯需要填写您的微信和手机号码方便联系您。
+        </text>
+        <view class="sub_wrap">
+          <input placeholder="请填写微信号" confirm-type="next" value="{{wechatid}}"
+            bindinput="input_wechatid"  class="picker"></input>
+            <view style="height: 40rpx;"></view>
+          <input placeholder="请填写手机号" confirm-type="next" value="{{phone}}"
+            bindinput="input_phone"  class="picker"></input>
+        </view>
+    </view>
+    <view style="height:100rpx"></view>
+    <view class="button-sp-area">
+      <button type="primary" plain="true" bindtap = "post">确定</button>
+    </view>
+  </view>
+</view>

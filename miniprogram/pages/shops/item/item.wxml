@@ -1,0 +1,46 @@
+
+<view class="">
+    <block wx:for="{{list}}" wx:key="item">
+        <view class="box" >
+            <view class="image_wrap" bindtap = "tap_image" data-url='{{item.image}}' wx:if='{{item.image}}'>
+                <image class="image" src="{{item.image}}" mode='widthFix'></image>
+            </view>
+            <view wx:else style='height: 15rpx;'></view>
+            <view bindtap = "manage" data-title='{{item.title}}' data-price='{{item.price}}' data-content='{{item.content}}' data-time='{{item.time}}' data-status='{{item.status}}' data-post='{{post}}' data-uid='{{item.uid}}' data-image='{{item.image}}'>
+                <view class="title">
+                    <text wx:if='{{item.brand}}' class="tag">{{item.brand}}</text>
+                    <text wx:if='{{item.price}}' class="tag">{{item.price}}元</text>
+                </view>
+                <view class="title">
+                    {{item.title}}
+                </view>
+                <view class="content">
+                    {{item.content}}
+                </view>
+                <view wx:if='{{post==1}}'>
+                    <view class="content" wx:if="{{item.status==1}}">
+                        已结束
+                    </view> 
+                    <view class="buy" wx:elif="{{item.price}}">
+                        点击购买
+                    </view> 
+                    <view class="content" wx:else>
+                        询价中
+                    </view> 
+                </view>
+                <view wx:else>
+                    <view class="content" wx:if="{{item.status==1}}">
+                        已售完
+                    </view> 
+                    <view class="buy" wx:else>
+                        点击购买
+                    </view> 
+                </view>
+
+            </view>
+
+        </view>
+    </block>
+    <view style="height:80rpx">
+    </view>
+</view>

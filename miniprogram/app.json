@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/shops/shops",
+    "pages/shops/item/item",
+    
+    "pages/user/user",
+    "pages/user/login/login"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "海淘达人",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
